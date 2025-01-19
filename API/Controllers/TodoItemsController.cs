@@ -27,7 +27,7 @@ public class TodoItemsController : ControllerBase
 
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
+    public async Task<ActionResult<TodoItemDTO>> GetTodoItem(int id)
     {
         var todoItem = await _context.TodoItems.FindAsync(id);
 
