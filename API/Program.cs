@@ -12,6 +12,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins", policy =>
+    {
+        policy.AllowAnyOrigin()  // Allow all origins
+              .AllowAnyHeader()  // Allow all headers
+              .AllowAnyMethod(); // Allow all methods (GET, POST, etc.)
+    });
+});
+
 
 var app = builder.Build();
 
@@ -23,7 +33,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+
+// Apply CORS
+app.UseCors("AllowAllOrigins");
+
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
