@@ -1,17 +1,18 @@
 ﻿using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using API.Data;
 
 
-namespace TodoApi.Controllers;
+namespace API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
 public class TodoItemsController : ControllerBase
 {
-    private readonly TodoContext _context;
+    private readonly ApplicationDbContext _context;
 
-    public TodoItemsController(TodoContext context)
+    public TodoItemsController(ApplicationDbContext context)
     {
         _context = context;
     }
