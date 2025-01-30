@@ -66,7 +66,7 @@ public class TodoItemsController : ControllerBase
             return NotFound();
         }
 
-        return NoContent();
+        return Ok(ItemToDTO(todoItem));
     }
    
     [HttpPost]
@@ -99,7 +99,7 @@ public class TodoItemsController : ControllerBase
         _context.TodoItems.Remove(todoItem);
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(ItemToDTO(todoItem));
     }
 
     private bool TodoItemExists(int id)
